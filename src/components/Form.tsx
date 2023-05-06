@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import { PrefectureContent } from "../composables/usePrefectures";
 
 interface FromProps {
-  onChange: Function;
+  onChange: () => void;
 }
 
 function Form(props: FromProps) {

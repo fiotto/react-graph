@@ -53,7 +53,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -105,6 +105,7 @@ function Graph(props: GraphProps) {
 
     // 内容の更新
     setPopulations(props.populations);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.populations]);
 
   const data = {
