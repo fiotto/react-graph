@@ -1,6 +1,5 @@
-import { ChangeEvent, ChangeEventHandler, ReactEventHandler, useContext, useState } from "react"
-
-import { PrefectureContent } from "./App"
+import { ChangeEvent, useContext, useState } from "react"
+import { PrefectureContent } from "../composables/usePrefectures"
 
 function Form() {
   const prefecture = useContext(PrefectureContent)

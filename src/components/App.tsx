@@ -1,20 +1,10 @@
-import { createContext } from "react";
-
 import "./App.css";
 
 import Header from './Header';
 import Form from "./Form";
+import Graph from "./Graph";
 import Footer from './Footer';
-import usePrefectures, { Prefecture } from "../composables/usePrefectures";
-
-interface PrefectureContent {
-  prefectures: Prefecture[]
-  
-}
-
-export const PrefectureContent = createContext<PrefectureContent>({
-  prefectures: []
-})
+import usePrefectures, { PrefectureContent } from "../composables/usePrefectures";
 
 function App() {
   const { prefectures } = usePrefectures()
@@ -29,6 +19,7 @@ function App() {
         <PrefectureContent.Provider value={ value }>
           <p>APPコンポーネント [ { prefectures.length } ]</p>
           <Form></Form>
+          <Graph></Graph>
         </PrefectureContent.Provider>
       </main>
       <Footer></Footer>

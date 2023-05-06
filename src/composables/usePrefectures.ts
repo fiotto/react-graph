@@ -13,6 +13,15 @@ export interface Prefecture {
   prefName: string
 }
 
+interface PrefectureContent {
+  prefectures: Prefecture[]
+  
+}
+
+export const PrefectureContent = createContext<PrefectureContent>({
+  prefectures: []
+})
+
 export default function usePrefectures() {
   const [ prefectures, setPrefectures ] = useState<Prefecture[]>([]);
 
@@ -22,7 +31,6 @@ export default function usePrefectures() {
         'X-API-KEY': import.meta.env.VITE_RESAS_API_KEY
       }
     })
-    console.log('res', res)
     setPrefectures(res.data.result)
   }
 
