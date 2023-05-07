@@ -101,7 +101,7 @@ function Graph(props: GraphProps) {
         x: {
           title: {
             display: true,
-            text: "人口数",
+            text: "年度",
             color: gridColor,
           },
           grid: {
@@ -114,7 +114,7 @@ function Graph(props: GraphProps) {
         y: {
           title: {
             display: true,
-            text: "年度",
+            text: "人口数",
             color: gridColor,
           },
           grid: {

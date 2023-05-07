@@ -1,4 +1,4 @@
-export const APP_TITLE = "React グラフ";
+export const APP_TITLE = "都道府県別人口推移";
 
 export const GRAPH_COLOR_SET = [
   { r: 255, g: 75, b: 0 },
