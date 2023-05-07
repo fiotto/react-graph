@@ -1,7 +1,13 @@
+import "./Header.css";
+
 import { APP_TITLE } from "../consts";
 
 const Header = () => {
-  return <header>{APP_TITLE}</header>;
+  return (
+    <header>
+      <div className="title">{APP_TITLE}</div>
+    </header>
+  );
 };
 
 export default Header;
