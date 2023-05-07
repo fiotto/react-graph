@@ -4,7 +4,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import { PrefectureContent } from "../composables/usePrefectures";
 
 interface FromProps {
-  onChange: () => void;
+  onChange(newValue: number[]): void;
 }
 
 function Form(props: FromProps) {
@@ -12,7 +12,6 @@ function Form(props: FromProps) {
   const [value, setValue] = useState<number[]>([]);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const oldValue = value;
     let newValue = [...value];
     const targetValue = Number(event.currentTarget.value);
     if (event.currentTarget.checked) {
@@ -23,7 +22,7 @@ function Form(props: FromProps) {
       );
     }
     setValue(newValue);
-    props.onChange(newValue, oldValue);
+    props.onChange(newValue);
   };
 
   return (

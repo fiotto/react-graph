@@ -133,18 +133,8 @@ function Graph(props: GraphProps) {
   useEffect(() => {
     window
       .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
+      .addEventListener("change", () => {
         setPptions(getOption());
-
-        console.log("ダークモードの切り替え");
-        const darkModeOn = e.matches;
-        if (darkModeOn) {
-          document.body.classList.remove("light-mode");
-          document.body.classList.add("dark-mode");
-        } else {
-          document.body.classList.remove("dark-mode");
-          document.body.classList.add("light-mode");
-        }
       });
   }, []);
 
