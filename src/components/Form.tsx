@@ -1,3 +1,5 @@
+import "./Form.css";
+
 import { ChangeEvent, useContext, useState } from "react";
 import { PrefectureContent } from "../composables/usePrefectures";
 
@@ -25,9 +27,9 @@ function Form(props: FromProps) {
   };
 
   return (
-    <>
+    <div className="form">
       {prefecture.prefectures.map((item) => (
-        <label key={item.prefCode}>
+        <label className="form__label" key={item.prefCode}>
           <input
             type="checkbox"
             value={item.prefCode}
@@ -37,7 +39,7 @@ function Form(props: FromProps) {
           {item.prefName}
         </label>
       ))}
-    </>
+    </div>
   );
 }
 

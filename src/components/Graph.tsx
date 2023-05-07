@@ -12,7 +12,7 @@ import {
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import { PrefectureContent } from "../composables/usePrefectures";
-import { GRAPH_COLOR_SET } from "../consts";
+import { GRAPH_COLOR_SET, GRAPH_GRID_COLOR } from "../consts";
 
 interface PopulationApi {
   message: string | null;
@@ -53,15 +53,6 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-  },
-};
-
 const labels = [
   "1960",
   "1965",
@@ -87,6 +78,75 @@ function Graph(props: GraphProps) {
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [populations, setPopulations] = useState<number[]>([]);
   const { prefectures } = useContext(PrefectureContent);
+
+  const getOption = () => {
+    const isDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const gridColor = isDarkMode
+      ? GRAPH_GRID_COLOR.dark
+      : GRAPH_GRID_COLOR.light;
+
+    return {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "right" as const,
+          labels: {
+            color: gridColor,
+          },
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "人口数",
+            color: gridColor,
+          },
+          grid: {
+            color: gridColor,
+          },
+          ticks: {
+            color: gridColor,
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: "年度",
+            color: gridColor,
+          },
+          grid: {
+            color: gridColor,
+          },
+          ticks: {
+            color: gridColor,
+          },
+        },
+      },
+    };
+  };
+
+  const [options, setPptions] = useState(getOption());
+
+  useEffect(() => {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        setPptions(getOption());
+
+        console.log("ダークモードの切り替え");
+        const darkModeOn = e.matches;
+        if (darkModeOn) {
+          document.body.classList.remove("light-mode");
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+          document.body.classList.add("light-mode");
+        }
+      });
+  }, []);
 
   useEffect(() => {
     // 追加するグラフ

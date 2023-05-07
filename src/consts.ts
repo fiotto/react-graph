@@ -10,3 +10,8 @@ export const GRAPH_COLOR_SET = [
   { r: 153, g: 0, b: 153 },
   { r: 132, g: 145, b: 158 },
 ];
+
+export const GRAPH_GRID_COLOR = {
+  dark: "#FFF",
+  light: "#808080",
+};
