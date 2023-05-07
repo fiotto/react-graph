@@ -6,13 +6,14 @@ name: React Graph CI/CD
 on:
   push:
     branches: 
-      - '**'
+      - "**"
   pull_request:
-    branches: [ "main" ]
+    branches: 
+      - "main"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -57,14 +58,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      actions: write
-      checks: write
-      contents: write
-      deployments: write
-      issues: write
-      packages: write
-    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
