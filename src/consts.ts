@@ -13,5 +13,5 @@ export const GRAPH_COLOR_SET = [
 
 export const GRAPH_GRID_COLOR = {
   dark: "#FFF",
-  light:　"#808080" 
-}
+  light: "#808080",
+};

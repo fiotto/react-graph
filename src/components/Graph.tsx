@@ -80,67 +80,73 @@ function Graph(props: GraphProps) {
   const { prefectures } = useContext(PrefectureContent);
 
   const getOption = () => {
-    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const gridColor = isDarkMode ? GRAPH_GRID_COLOR.dark : GRAPH_GRID_COLOR.light
-  
+    const isDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const gridColor = isDarkMode
+      ? GRAPH_GRID_COLOR.dark
+      : GRAPH_GRID_COLOR.light;
+
     return {
       responsive: true,
       plugins: {
         legend: {
           position: "right" as const,
           labels: {
-            color: gridColor
-          }
+            color: gridColor,
+          },
         },
       },
       scales: {
         x: {
           title: {
             display: true,
-            text: '人口数',
-            color: gridColor
+            text: "人口数",
+            color: gridColor,
           },
           grid: {
-            color: gridColor
+            color: gridColor,
           },
           ticks: {
-            color: gridColor
-          }
+            color: gridColor,
+          },
         },
         y: {
           title: {
             display: true,
-            text: '年度',
-            color: gridColor
+            text: "年度",
+            color: gridColor,
           },
           grid: {
-            color: gridColor
+            color: gridColor,
           },
           ticks: {
-            color: gridColor
-          }
-        }
-      }
-    }
-  }
+            color: gridColor,
+          },
+        },
+      },
+    };
+  };
 
   const [options, setPptions] = useState(getOption());
 
   useEffect(() => {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      setPptions(getOption())
-      
-      console.log('ダークモードの切り替え')  
-      const darkModeOn = e.matches;
-      if (darkModeOn) {
-        document.body.classList.remove('light-mode');
-        document.body.classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode');
-        document.body.classList.add('light-mode');
-      }
-    });
-  }, [])
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        setPptions(getOption());
+
+        console.log("ダークモードの切り替え");
+        const darkModeOn = e.matches;
+        if (darkModeOn) {
+          document.body.classList.remove("light-mode");
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.remove("dark-mode");
+          document.body.classList.add("light-mode");
+        }
+      });
+  }, []);
 
   useEffect(() => {
     // 追加するグラフ
